@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <FeatureName>PugBuddy.Control.Netduino</FeatureName>
+    <Guid>{04c6160d-c98e-4225-a884-f105c22bd494}</Guid>
+    <Description />
+    <Groups />
+  </PropertyGroup>
+  <ItemGroup>
+    <DriverLibs Include="PugBuddy_Control_Netduino.$(LIB_EXT)" />
+    <InteropFeature Include="PugBuddy_Control_Netduino" />
+    <MMP_DAT_CreateDatabase Include="$(BUILD_TREE_CLIENT)\pe\PugBuddy.Control.Netduino.pe" />
+    <RequiredProjects Include="G:\_WORK_BACKUP\ckubit\L-CKUBIT\Home\Visual Studio 2010\Projects\PugBuddy\PugBuddy.Control.Netduino\Stubs\dotnetmf.proj" />
+  </ItemGroup>
+</Project>

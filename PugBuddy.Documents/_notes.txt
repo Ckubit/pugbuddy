@@ -1,0 +1,120 @@
+STARTUP PROCEDURE:
+
+1. Power cycle ECU - plug in
+2. Deploy to Netduino
+3. Netduino/Wireless ON
+4. ECU On (red light)
+
+
+DC MOTOR CONTROL - ARDUINO
+http://itp.nyu.edu/physcomp/Labs/DCMotorControl
+http://luckylarry.co.uk/arduino-projects/control-a-dc-motor-with-arduino-and-l293d-chip/
+
+GOOD RESOURCE FOR BREADBOARD/GENERAL COMPONENT KNOWLEDGE
+http://itp.nyu.edu/physcomp/Labs/Components
+
+
+Shopping list
+	- http://www.radioshack.com/product/index.jsp?productId=2103801#inTheBox
+	- http://www.johnnycode.com/blog/2010/10/11/really-getting-started-with-the-netduino/
+	- http://shop.ebay.com/i.html?_nkw=traxxas+xl-5+truck&_sacat=0&_sop=12&_odkw=traxxas+xl-5+full&_osacat=0&_trksid=p3286.c0.m270.l1313
+	
+TRAXXAS ESC Drivers
+http://forums.netduino.com/index.php?/topic/165-netduino-esc-driver/
+
+
+MOTORS
+Bipolar stepper motor and .NET Micro Framework
+http://bansky.net/blog/2009/04/bipolar-stepper-motor-and-dot-net-micro-framework/
+
+WEBSERVER
+http://forums.netduino.com/index.php?/topic/575-updated-web-server/
+
+
+
+http://stackoverflow.com/questions/4429935/netduino-plus-sd-card-cannot-get-basic-example-working
+Answer
+
+I've been helped at the Netduino Forum..
+I needed to write to the "\SD\" folder..
+Mounting/dll was only necessary for the plain netduino with SD card shield..
+
+link
+
+Three quick things: 1. The MicroSD card will be mounted at \SD\ rather than \
+2. MicroSD cards up to 2GB are generally supported.
+3. SecretLabs.NETMF.IO is only needed for manually mounting and dismounting--on the regular Netduino. The Netduino Plus automatically mounts and dismounts MicroSD Cards.
+
+
+
+
+SQL
+I took Quiche31's advice and wrote some ASP.NET web services that my computer uses to communicate with the netduino plus. Here is some code...
+
+
+On the netduino side of things....
+
+//Socket to connect to webservice
+Socket socWebService = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+//IP of where to send the request
+IPEndPoint Desination = new IPEndPoint(IPAddress.Parse("192.168.1.3"), 8081);
+
+//Bind to new socket
+socWebService.Bind(new IPEndPoint(IPAddress.Any, 80));
+
+//Connect to destination
+socWebService.Connect(Desination);
+
+if (socWebService != null)
+{
+string request = "Source=" + Source + "&EventTypeID=" + EventTypeID.ToString();
+string header = "POST /DoorBuzzerSvc.asmx/LogDoorEvent HTTP/1.1\r\nHost: localhost\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: " + request.Length.ToString() + "\r\n\r\n";
+
+socWebService.Send(Encoding.UTF8.GetBytes(header), header.Length, SocketFlags.None);
+socWebService.Send(Encoding.UTF8.GetBytes(request), request.Length, SocketFlags.None);
+
+//Check to see if we got data back...
+if (socWebService.Available > 0)
+{
+//Process response
+byte[] buffer = new byte[socWebService.Available];
+int readByteCount = socWebService.Receive(buffer, socWebService.Available, SocketFlags.None);
+string content = new string(Encoding.UTF8.GetChars(buffer));
+
+//View Response
+Debug.Print(content);
+
+}
+
+}
+
+socWebService.Close();
+
+
+
+And on the WebService Side of things..... in an asmx.vb file
+
+<WebMethod()> _
+Public Function LogDoorEvent(ByVal Source As String, ByVal EventTypeID As Integer) As Boolean
+
+'Log the ring in a DB
+Dim DBConnection As New SqlConnection("data source=.;Integrated Security=SSPI;Initial Catalog=DoorBuzzer;")
+DBConnection.Open()
+Dim SQLText As String = "INSERT INTO Events (Source, EventTypeID) Values (@Source, @EventTypeID)"
+Dim SQLCmd As New SqlCommand(SQLText, DBConnection)
+SQLCmd.Parameters.AddWithValue("@Source", Source)
+SQLCmd.Parameters.AddWithValue("@EventTypeID", EventTypeID)
+
+SQLCmd.ExecuteNonQuery()
+SQLCmd.Dispose()
+
+DBConnection.Close()
+DBConnection.Dispose()
+
+Return True
+End Function 
+
+
+
+
+

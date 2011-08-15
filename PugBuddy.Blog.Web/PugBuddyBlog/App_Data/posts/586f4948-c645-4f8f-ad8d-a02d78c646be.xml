@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<post>
+  <author>Chuck</author>
+  <title>First Post</title>
+  <description />
+  <content>&lt;p&gt;This blog will be a place to document my work on the PugBuddy  project, it's core  Netduino Plus microcontroller, and whatever failures  or successes may  happen along the way.&amp;nbsp; The goal of the project will  be to use the &lt;a href="http://www.microsoft.com/netmf/default.mspx"&gt;.NET Micro Framework&lt;/a&gt; and a plentiful supply of old rc cars and electronic toys that i've destroyed over the years to produce a new device capable of entertaining (or teasing) my pug dogs  while i'm at work.&amp;nbsp; The 4 main things that i would like to achieve in v1 are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The device will respond to requests over TCP/IP by acting as a mobile web server.&lt;/li&gt;
+&lt;li&gt;Control will be available through a simple web user interface.&amp;nbsp; Functions will include forward, backwards, left turn, right turn, and bone deploy.&lt;/li&gt;
+&lt;li&gt;An onboard camera to deliver images to the web user.&lt;/li&gt;
+&lt;li&gt;The device will be slobber resistant as one of my pugs has drooling issues...&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/BlogEngine.Web/image.axd?picture=2011%2f1%2fnetduino3.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/PugBuddyBlog/image.axd?picture=2011%2f1%2fnetduino3.png" alt="" /&gt;&lt;/p&gt;</content>
+  <ispublished>True</ispublished>
+  <iscommentsenabled>True</iscommentsenabled>
+  <pubDate>2010-12-31 19:10:00</pubDate>
+  <lastModified>2011-01-01 16:42:17</lastModified>
+  <raters>1</raters>
+  <rating>5</rating>
+  <slug>First-Post</slug>
+  <tags />
+  <comments>
+    <comment id="f6682248-7af0-41eb-9267-5941b2e33cf9" parentid="00000000-0000-0000-0000-000000000000" approved="True">
+      <date>2011-01-01 17:05:29</date>
+      <author>CBraun</author>
+      <email>c-c.braun@hotmail.com</email>
+      <country>us</country>
+      <ip>24.251.8.147</ip>
+      <moderatedby>StopForumSpam</moderatedby>
+      <avatar />
+      <content>Looks good!  What is your time frame that you are looking at here?  One should try sticking to a structured schedule when working on new applications.  Also when thinking about this pug buddy, what are you working on to prevent the pugs from attacking your device?  What will happen when it flips over or gets stuck in a booby trap?  
+
+My thoughts for now.  </content>
+    </comment>
+  </comments>
+  <categories>
+    <category>0dcf66f5-ba1f-4835-bcfb-2abb850b65e1</category>
+  </categories>
+  <notifications>
+    <email>c-c.braun@hotmail.com</email>
+  </notifications>
+</post>

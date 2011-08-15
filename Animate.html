@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 
+  <script src="http://code.jquery.com/jquery-1.4.4.js"></script>
+</head>
+<body>
+  <p>   
+    <span>Vroom</span>
+    <span>&nbsp;</span>
+  </p>
+
+  <div></div>
+<script>
+var obj = $('<div style="width:50px;height:50px;background:red;position:absolute"></div>');
+
+obj.appendTo(document.body);
+
+$(document).bind('mousemove',function(ev){
+ obj.animate({top:ev.pageY,left:ev.pageX},{queue:false,duration:200,easing:'linear'})});
+</script>
+
+</body>
+</html>
